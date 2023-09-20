@@ -1,0 +1,155 @@
+@use "../../global" as g;
+//----------------------------------------
+//   SPメニュー
+//  ドロワー
+//----------------------------------------
+.p-spmenu {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 101vw;
+    width: 100%;
+    height: min( 100%, g.vwmax(861));
+    z-index: 400;
+    transition: left 0.3s;
+    &.open {
+        left: 0;
+    }
+    &[data-hide="true"]{
+        opacity : 0;
+        .p-spmenu__inner {
+            display:none;
+        }
+    }
+}
+
+.p-spmenu__background {
+    display: none;
+}
+
+.p-spmenu__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    width: calc(100% - g.vwmax(63));
+    height: calc( 100% - g.vwmax(61));
+    background-color: g.$color-white;
+    .p-spmenu__header {
+        width: 100%;
+        height: g.vwmax(166);
+        left: 0;
+        top: 0;
+        picture {
+            display: block;
+            margin-top: g.vwmax(-19);
+            width: g.vwmax(303);
+            aspect-ratio: 229/119;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .p-spmenu__list__wrapper {
+        margin-top: g.rem(17);
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        ul {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - g.rem(185.5));
+            margin: g.rem(10) g.rem(10) g.rem(10) g.rem(175);
+            row-gap: g.rem(31);
+            li {
+                font-size: g.rem(22);
+                text-align: left;
+                letter-spacing: g.rem(1.7);
+                transition: 0.3s;
+                &:hover {
+                    opacity: 0.6;
+                    color: g.$color-brown;
+                }
+            }
+        }
+    }
+}
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-md') {
+    .p-spmenu {
+        width: 100%;
+        max-width: 100%; //
+        height: calc(100% - 52px);
+        z-index: 400;
+        top: g.$header-height-sp;
+        justify-content: flex-start;
+        align-items: flex-end;
+        display: flex;
+        &.open {
+            //  全体を消してしまうと表示時ワープしてしまうので、内容のみを隠しておく
+            .p-spmenu__inner{
+                display: flex;
+            }
+        }
+    }
+    .p-spmenu__background {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: calc(100% - g.$header-height-sp);
+        top: 64px;
+        background-color: rgba(139, 108, 58, 0.7);
+        transition: opacity 0.3s;
+        opacity: 0;
+        z-index: 0;
+        &.open {
+            opacity: 1;
+            z-index: 390;
+        }
+    }
+    .p-spmenu__inner {
+        position: relative;
+        width: g.vwsp( 250 );
+        height: calc( 100% );
+        .p-spmenu__list__wrapper {
+            margin-top: g.rem(56);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            ul {
+                display: flex;
+                flex-direction: column;
+                width: calc(100% - g.vwsp(40));
+                margin: auto;
+                row-gap: g.rem(29);
+                li {
+                    font-size: g.vwclampmin(16, 24);
+                    text-align: center;
+                    letter-spacing: g.vwsp(0);
+                    margin-left: g.rem(0);
+                    letter-spacing: g.rem( 0.6);
+                }
+            }
+        } // .p-spmenu__list__wrapper
+        .p-spmenu__snswrapper {
+            margin-top: 54px;
+            width: 100%;
+            ul {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 26px;
+                margin-left: 1px;
+            }
+        }
+    } // .p-spmenu__inner
+}

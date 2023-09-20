@@ -1,0 +1,17 @@
+@use "../global" as g;
+
+/*--------------------------------------------------
+    フッター
+--------------------------------------------------*/
+
+.l-footer {
+    position: relative;
+    color: g.$color-font-w;
+    background-color : g.$color-darkgreen;
+    //padding: 24px 0;
+    //  縦
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
