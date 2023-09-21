@@ -310,9 +310,9 @@ function my_add_json()
   $insert.='"@graph":[{"@type":"CollectionPage",';
   $insert.='"@id":"https://works.etienu.com/sakatakomuten/",';
   $insert.='"url":"https://works.etienu.com/sakatakomuten/",';
-  $insert.='"name":"SAKATA KOMUTEN | 自然に抱かれた安らぎの住まい　映しい自然と豊かな住空間が調和する暮らし",';
+  $insert.='"name":"",';
   $insert.='"isPartOf":{"@id":"https://works.etienu.com/sakatakomuten/#website"},';
-  $insert.='"description":"自然に抱かれた安らぎの住まい 美しい自然と豊かな住空間が調和する暮らし",';
+  $insert.='"description":"",';
   $insert.='"breadcrumb":{"@id":"https://works.etienu.com/sakatakomuten/#breadcrumb"},';
   $insert.='"inLanguage":"ja"},';
   $insert.='{"@type":"BreadcrumbList",';
@@ -321,7 +321,7 @@ function my_add_json()
   $insert.='{"@type":"WebSite","@id":"https://works.etienu.com/sakatakomuten/#website",';
   $insert.='"url":"https://works.etienu.com/sakatakomuten/",';
   $insert.='"name":"SAKATA KOMUTEN",';
-  $insert.='"description":"自然に抱かれた安らぎの住まい　映しい自然と豊かな住空間が調和する暮らし",';
+  $insert.='"description":"",';
   $insert.='"potentialAction":[{"@type":"SearchAction",';
   $insert.='"target":{"@type":"EntryPoint",';
   $insert.='"urlTemplate":"https://works.etienu.com/sakatakomuten/?s={search_term_string}"},';
@@ -430,15 +430,12 @@ function my_add_admin_setting_page()
 }
 function my_setting_file_path()
 {
-//    $return_url = '../wp-content/themes/blank_themes/admin-theme-setting-page.php';
     $return_url = 'admin-theme-setting-page.php';
     require $return_url;
 }
 function my_register_setting()
 {
     register_setting('custom-menu-group', 'general');
-    // register_setting('custom-menu-group', '2つ目のname値');
-    // register_setting('custom-menu-group', '3つ目のname値');
 }
 // メディアアップローダーAPIを管理画面へ読み込ませる
 add_action('admin_print_scripts', 'my_add_setting_media_api_scripts');
