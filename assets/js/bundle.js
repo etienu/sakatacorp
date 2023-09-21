@@ -36,12 +36,8 @@ var adjustViewport = /*#__PURE__*/function () {
     key: "set",
     value: function set(_executeWindowWidth) {
       var executeWindowWidth = _executeWindowWidth || 375;
-      //console.log(executeWindowWidth);
       var elmViewport = document.querySelector('meta[name="viewport"]');
-      //console.log("[inner]" + window.innerWidth + "< [execute]" + executeWindowWidth);
       var valueViewport = window.innerWidth < executeWindowWidth ? "width=".concat(executeWindowWidth, ", user-scalable=no, target-densitydpi=device-dpi") : 'width=device-width, initial-scale=1';
-      //console.log("[txt]" + valueViewport);
-      //console.log("[elem]" + elmViewport);
       elmViewport.setAttribute('content', valueViewport);
       return;
     }
@@ -154,11 +150,7 @@ var accessibility = /*#__PURE__*/function () {
       //  メインハンバーガーが開いている
       if (exp == "true") {
         //  現状ハンバーガーの方で閉じ処理している
-        //  ハンバーガーもアクセシビリティの一部として移植してもよいかと
       }
-
-      //  メインハンバーガーが閉じている
-      else {}
     }
 
     //----------------------------------------
@@ -179,7 +171,6 @@ var accessibility = /*#__PURE__*/function () {
         if (elm.dataset['accgroup'] != "spmenu") {
           var ret = this.searchAcc("spmenu", "start");
           if (ret) ret.focus();
-          //console.log("SPメニュー外に出たので強制的に戻す");
           i_event.preventDefault();
         }
       }
@@ -252,9 +243,7 @@ var accessibility = /*#__PURE__*/function () {
     value: function set_Hamburger(i_target, i_groupName) {
       var _this3 = this;
       var ret;
-      //console.log( "ハンバーガーにセット" , i_target );
       i_target.addEventListener("keydown", function (e) {
-        //console.log( "ハンバーガーでキー押した:"+e.key );
         //  現在のaccgroupを確認
         var group = i_target.dataset['accgroup'];
         //  メインループ中
@@ -281,7 +270,6 @@ var accessibility = /*#__PURE__*/function () {
           }
           if (ret) {
             ret.focus();
-            //console.log("反対の要素に飛んだ場合はイベントを止める");
             e.preventDefault();
           }
         }
@@ -303,7 +291,6 @@ var accessibility = /*#__PURE__*/function () {
         //  指定名称のグループから指定名称の機能を検索
         var accfuncname = tar.dataset['acc'];
         if (accfuncname == i_FuncName) {
-          //console.log( tar );
           return tar;
         }
       }
@@ -356,7 +343,6 @@ var accessibility = /*#__PURE__*/function () {
     key: "eventRegistration",
     value: function eventRegistration() {
       //  グループごとに設定
-      //  - - - - - - - - - - - - - - - - 
       //  「メイン」
       this.set_group_basic("main");
       //  「SPメニュー」
@@ -416,16 +402,12 @@ var buttonCookie = /*#__PURE__*/function () {
   }, {
     key: "setInit",
     value: function setInit() {
-      //document.cookie = 'name=' + this.cookiename;
-      //document.cookie = 'checked=' + this.cookiestate;
       switch (this.cookietype) {
         case "bool":
           Cookies.set(this.cookiename, "false");
-          //console.log("setInit : bool : false");
           break;
         default:
           Cookies.set(this.cookiename, "false");
-          //console.log("setInit : default : false");
           break;
       }
     }
@@ -440,11 +422,8 @@ var buttonCookie = /*#__PURE__*/function () {
       //  クッキーがなければ初期値をセット
       var ret = Cookies.get(this.cookiename);
       if (typeof ret === "undefined") {
-        //console.log("get : 未定義です : [type]" + this.cookietype);
         this.setInit();
-      } else {
-        //console.log("get : " + ret);
-      }
+      } else {}
       return ret;
     }
   }, {
@@ -481,13 +460,11 @@ var buttonCookie = /*#__PURE__*/function () {
         case "true":
           Cookies.set(this.cookiename, "false");
           //  データ属性の追加
-          //this.btn.dataset.data = "false";
           this.setcssdata();
           break;
         case "false":
           Cookies.set(this.cookiename, "true");
           //  データ属性の追加
-          //this.btn.dataset.data = "true";
           this.setcssdata();
           break;
       }
@@ -511,12 +488,9 @@ var buttonCookieEngine = /*#__PURE__*/function () {
     value: function add(i_item) {
       //  クリックイベントセット
       i_item.btn.addEventListener("click", function () {
-        //console.log("cookie click [name]" + i_item.cookiename + "[type]" + i_item.cookietype);
         if (i_item.checktype_bool()) {
           i_item.toggle();
         }
-        //  クリックした時に同ネームのdata-nameを連動させるには？
-        //  アイテムにグループを保存して参照する
         i_item.groupupdate();
       });
       this.items.push(i_item);
@@ -525,23 +499,12 @@ var buttonCookieEngine = /*#__PURE__*/function () {
     //  処理
   }, {
     key: "task",
-    value: function task() {
-      /*
-          this.scroll = window.pageYOffset;
-          for (var i = 0; i < this.items.length; i++) {
-              var itm = this.items[i];
-              //console.log("[eeParallaxEngine::task()][%d/%d][item]", i, this.items.length, itm);
-              this.taskItem(itm);
-          }
-      */
-    }
+    value: function task() {}
 
     //  個別アイテム処理
   }, {
     key: "taskItem",
-    value: function taskItem(i_Item) {
-      //      var itm = i_Item.getTarget();
-    }
+    value: function taskItem(i_Item) {}
 
     //  指定クラスがあれば全部登録
   }, {
@@ -550,12 +513,10 @@ var buttonCookieEngine = /*#__PURE__*/function () {
       var _this2 = this;
       var jsbtns = document.querySelectorAll('.js-cookiebutton');
       var itemgroup = this.items;
-      //console.log("cookiebuttonクラスの初期化 : 数 : " + jsbtns.length);
       jsbtns.forEach(function (target) {
         var name = target.dataset['name'] || "dummy";
         var type = target.dataset['type'] || "default";
         var data = target.dataset['data'] || "false";
-        //console.log("[target]" + target + " [name]" + name + " [type]" + type + " [data]" + data);
         var btn = new buttonCookie(itemgroup, target, name, type);
         _this2.add(btn);
       });
@@ -682,21 +643,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 var buttonHumburger = /*#__PURE__*/function () {
   function buttonHumburger(i_id, i_closebtn, i_header, i_spmenu) {
     _classCallCheck(this, buttonHumburger);
-    //        this.init();
     this.btn = document.querySelector(i_id);
     this.closebtn = document.querySelector(i_closebtn);
     this.header = document.querySelector(i_header);
     this.spmenu = document.querySelector(i_spmenu);
     //  バックグラウンド
-    //  本当はデータ属性とかで指定するべきかと
     this.background = document.querySelector(".p-spmenu__background");
-    //console.log("[ハンガーガー]");
-    //console.log("[btn]" + this.btn.classList);
-    //console.log("[header]" + this.header.classList);
-    //console.log("[spmenu]" + this.spmenu.classList);
-    //        let btn = document.querySelector('.p-hamburger');
-    //        let header = document.querySelector('.l-header');
-    //        let spmenu = document.querySelector('.p-spmenu');
   }
 
   // スクロールを禁止にする関数
@@ -733,7 +685,6 @@ var buttonHumburger = /*#__PURE__*/function () {
       this.btn.classList.toggle("open");
       this.spmenu.classList.toggle("open");
       this.background.classList.toggle("open");
-      //this.header.classList.toggle("open");
       //  開いた スクロール停止
       if (this.btn.classList.contains("open")) {
         //  非表示 → 表示
@@ -741,21 +692,12 @@ var buttonHumburger = /*#__PURE__*/function () {
         this.addScrollStop();
         //  ハンバーガーのアクセシビリティ属性変更(メイン→SPMENU)
         this.btn.setAttribute("aria-expanded", "true");
-        //this.btn.setAttribute( "tabindex", "2" );
         this.btn.dataset['accgroup'] = "spmenu";
         this.btn.dataset['acc'] = "start";
       }
       //  閉じた スクロール解除
       else {
         this.close();
-        /*            
-                    this.removeScrollStop();
-                    //  ハンバーガーのアクセシビリティ属性変更(SPMENU→メイン)
-                    this.btn.setAttribute( "aria-expanded", "false" );
-                    //this.btn.setAttribute( "tabindex", "" );
-                    this.btn.dataset['accgroup'] = "main";
-                    this.btn.dataset['acc'] = "";
-        */
       }
     }
 
@@ -766,12 +708,10 @@ var buttonHumburger = /*#__PURE__*/function () {
       this.btn.classList.remove("open");
       this.spmenu.classList.remove("open");
       this.background.classList.remove("open");
-      //this.header.classList.remove("open");
       // スクロール解除
       this.removeScrollStop();
       //  ハンバーガーのアクセシビリティ属性変更(SPMENU→メイン)
       this.btn.setAttribute("aria-expanded", "false");
-      //this.btn.setAttribute( "tabindex", "" );
       this.btn.dataset['accgroup'] = "main";
       this.btn.dataset['acc'] = "";
     }
@@ -789,16 +729,12 @@ var buttonHumburger = /*#__PURE__*/function () {
     value: function eventRegistration(i_inner, i_ullia, i_contact) {
       var _this = this;
       //  元
-      //let spmenu_li_a = document.querySelectorAll('.p-spmenu__inner ul li a');
-      //let spmenu_contact = document.querySelectorAll('.p-spmenu__inner .l-header__buttonswrapper a');
-
       //  クリックイベントセット
       this.btn.addEventListener("click", function () {
         _this.open();
       });
       //  ul liのメニューがクリックされたら閉じる
       var str_ullia = i_inner + " " + i_ullia;
-      //console.log(str_ullia);
       var spmenu_li_a = document.querySelectorAll(str_ullia);
       spmenu_li_a.forEach(function (lia) {
         lia.addEventListener("click", function () {
@@ -808,7 +744,6 @@ var buttonHumburger = /*#__PURE__*/function () {
 
       //  コンタクトボタンが押されたら閉じる
       var str_contact = i_inner + " " + i_contact;
-      //console.log(str_contact);
       var spmenu_contact = document.querySelectorAll(str_contact);
       if (spmenu_contact) {
         spmenu_contact.forEach(function (lia) {
@@ -828,7 +763,6 @@ var buttonHumburger = /*#__PURE__*/function () {
       this.spmenu.addEventListener('transitionend', function () {
         //  アニメーション終了時にopenが付いてない = closeした
         if (!_this.spmenu.classList.contains("open")) {
-          //console.log("閉じた");
           console.log(_this.spmenu.dataset);
           //  非表示→表示
           _this.spmenu.dataset['hide'] = "true";
@@ -865,9 +799,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 var buttonModal = /*#__PURE__*/function () {
   function buttonModal(i_btnclass, i_modal, i_background) {
     _classCallCheck(this, buttonModal);
-    //        this.init();
-    //console.log(i_btnclass + "/[modal]" + i_modal);
-
     this.btn = document.querySelector(i_btnclass);
     this.modal = document.querySelector(i_modal);
     this.background = document.querySelector(i_background);
@@ -910,10 +841,8 @@ var buttonModal = /*#__PURE__*/function () {
       if (!this.modal) return;
       this.btn.classList.toggle("open");
       this.modal.classList.toggle("open");
-      //this.header.classList.toggle("open");
       //  開いた スクロール停止
       if (this.btn.classList.contains("open")) {
-        //console.log("stopしてる？");
         this.addScrollStop();
       }
       //  閉じた スクロール解除
@@ -930,7 +859,6 @@ var buttonModal = /*#__PURE__*/function () {
       if (!this.modal) return;
       this.btn.classList.remove("open");
       this.modal.classList.remove("open");
-      //this.header.classList.remove("open");
       // スクロール解除
       this.removeScrollStop();
     }
@@ -941,8 +869,6 @@ var buttonModal = /*#__PURE__*/function () {
     value: function eventRegistration(i_inner, i_ullia, i_contact) {
       var _this = this;
       //  元
-      //let spmenu_li_a = document.querySelectorAll('.p-spmenu__inner ul li a');
-      //let spmenu_contact = document.querySelectorAll('.p-spmenu__inner .l-header__buttonswrapper a');
       if (!this.btn) return;
       //  クリックイベントセット
       this.btn.addEventListener("click", function () {
@@ -950,7 +876,6 @@ var buttonModal = /*#__PURE__*/function () {
       });
       //  ul liのメニューがクリックされたら閉じる
       var str_ullia = i_inner + " " + i_ullia;
-      //console.log(str_ullia);
       var modal_li_a = document.querySelectorAll(str_ullia);
       modal_li_a.forEach(function (lia) {
         lia.addEventListener("click", function () {
@@ -960,7 +885,6 @@ var buttonModal = /*#__PURE__*/function () {
 
       //  コンタクトボタンが押されたら閉じる
       var str_contact = i_inner + " " + i_contact;
-      //console.log(str_contact);
       var modal_contact = document.querySelectorAll(str_contact);
       modal_contact.forEach(function (lia) {
         lia.addEventListener("click", function () {
@@ -1396,8 +1320,6 @@ var contactForm = /*#__PURE__*/function () {
 //reCAPTCHA認証APIを実行して返ってきたトークンをフォームに設置する関数
 
 function grc_sendFormData(e) {
-  //console.log("[きてない]");
-  //console.log("[e]" + e);
   //  PHPから渡していたが、キーがHTML内に出力されてしまうのはよくないので
   //  とりあえず直接書いておく
   //  PHPからjsの受け渡しはどうしてもHTML出力になってしまうのでは？
@@ -1405,8 +1327,6 @@ function grc_sendFormData(e) {
   var reCAPTCHA_site_key = "6Ld-v70lAAAAAH-rR-4E3UJISYwe2Kd7ihL7FM20";
   //元のsubmitをいったんキャンセル
   if (e) e.preventDefault();
-  //if (this) this.preventDefault();
-  //console.log("[key]" + reCAPTCHA_site_key);
   //  recaptcha実行 actionは任意の文字指定(管理画面で反映される)
   grecaptcha.ready(function () {
     //  recaptcha実行 actionは任意の文字指定(管理画面で反映される)
@@ -1417,7 +1337,6 @@ function grc_sendFormData(e) {
       //console.log('grecaptcha.execute token=' + token);
       //   recaptcha認証後のトークンをフォームで送信するために設定
       document.getElementById('grc_token').value = token;
-      //console.log('フォームデータを送信');
       document.getElementById("id_contact").submit();
     }).catch(function (e) {
       console.error(e);
@@ -1430,11 +1349,7 @@ function grc_sendFormData(e) {
 //上で作成した関数をフォームデータ送信時に実行されるように設定
 var form_id_contact = document.getElementById("id_contact");
 if (form_id_contact) {
-  //console.log("[登録はしてる]");
-
   form_id_contact.addEventListener('submit', function (e) {
-    //console.log(e);
-    //if (e) e.preventDefault();
     grc_sendFormData(e);
   });
 }
@@ -1467,9 +1382,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 //
 //========================================================
 var displayLoader = /*#__PURE__*/function () {
-  //export default (displayLoader) => {
-  //const self = this;
-
   function displayLoader() {
     _classCallCheck(this, displayLoader);
     this.init();
@@ -1507,7 +1419,6 @@ var displayLoader = /*#__PURE__*/function () {
     key: "testLoad",
     value: function testLoad() {
       var dataId = "loading";
-      //console.log(this);
       this.startLoad(dataId);
       this.stopAllLoad();
     }
@@ -1541,9 +1452,7 @@ var displayLoader = /*#__PURE__*/function () {
     key: "eventRegistration",
     value: function eventRegistration() {
       var _this = this;
-      //この登録の仕方だとthisがここになっしまいエラー。
-      //window.addEventListener('load', this.testLoad );
-      //  ここでアロー関数で登録するとthisが使える
+      //  アロー関数で登録するとthisが使える
       window.addEventListener('load', function () {
         _this.testLoad();
       });
@@ -1580,7 +1489,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 var partsHeader = /*#__PURE__*/function () {
   function partsHeader(i_header) {
     _classCallCheck(this, partsHeader);
-    //  this.btn = document.querySelector(i_id);
     this.lheader = document.querySelector(i_header);
     this.body = document.querySelector("body");
     this.set = 200; //ウインドウ上部からどれぐら
@@ -1588,23 +1496,11 @@ var partsHeader = /*#__PURE__*/function () {
 
     this.boxTop = new Array();
     this.current = -1;
-    //各要素の位置
-    //position-nowは場所を取得したい対象の要素に付ける
-    //        let pnows = document.querySelectorAll('.position-now');
-    //        let cnt = 0;
-    //  
-    //        pnows.forEach((i) => {
-    //            this.boxTop[cnt] = i.offsetTop;
-    //            cnt ++;
-    //        });
-    //最初の要素にclass="position-now"をつける
-    //        changeBox(0);
     this.taskFloat();
   }
   _createClass(partsHeader, [{
     key: "scrollTask",
     value: function scrollTask() {
-      //var scroll = document.documentElement.scrollTop;
       //  ヘッダーのfloat表示
       this.taskFloat();
       /*
@@ -1614,7 +1510,8 @@ var partsHeader = /*#__PURE__*/function () {
               changeBox(i);
               break;
           }
-      };*/
+      };
+      */
     }
 
     //--------------------------------------------------
@@ -1874,12 +1771,9 @@ var eeParallax = /*#__PURE__*/function () {
   function eeParallax(i_target, i_speed) {
     _classCallCheck(this, eeParallax);
     this.target = i_target;
-    //        this.targetClass = document.querySelector(i_targetClass); //$("." + i_targetClass);
     this.speed = i_speed;
     this.beforerect = this.target.getBoundingClientRect(); //  初期の矩形を保存しておく
     //  差を取得
-    //        this.beforerect.bottom = Math.abs(this.beforerect.bottom) - Math.abs(this.beforerect.top);
-    //        this.beforerect.top = 0;
     this.beforepos = {
       x: 0,
       y: 0,
@@ -1892,8 +1786,6 @@ var eeParallax = /*#__PURE__*/function () {
     };
     this.scale = 1.0;
     this.setBeforePos();
-    //console.log("[eParallax] newt", this.targetClass);
-    //console.log("[eParallax] new : [beforerect]", this.beforerect );
   }
   _createClass(eeParallax, [{
     key: "getTarget",
@@ -1955,7 +1847,6 @@ var eeParallaxEngine = /*#__PURE__*/function () {
       this.scroll = window.pageYOffset;
       for (var i = 0; i < this.items.length; i++) {
         var itm = this.items[i];
-        //console.log("[eeParallaxEngine::task()][%d/%d][item]", i, this.items.length, itm);
         this.taskItem(itm);
       }
     }
@@ -1972,47 +1863,29 @@ var eeParallaxEngine = /*#__PURE__*/function () {
       // ウインドウの中心計算 + スクロール量
       var windowCenter = windowHeight / 2 + this.scroll;
       //  保存した矩形を利用( transformの影響を受ける為 )
-      var rect = i_Item.beforerect; //getBoundingClientRect(); // レンダリングサイズなのでscaleを使う場合影響受ける
-      var rtop = 0; // rect.top;
+      var rect = i_Item.beforerect; // レンダリングサイズなのでscaleを使う場合影響受ける
+      var rtop = 0;
       //  マイナスだったとしても高さは高さなので絶対値化して↓方向とする
       var rbottom = Math.abs(Math.abs(i_Item.beforerect.bottom) - Math.abs(i_Item.beforerect.top));
-      //console.log("[rtop]", rtop);
-      //console.log("[rbottom]", rbottom);
 
       // scaleで拡大された分の相殺倍率
       var sper = 1.0 / i_Item.scale;
       // 拡大率を兼ねたアイテムのセンター
       var itemCenter = rtop * sper + (rbottom * sper - rtop * sper) / 2;
-      //var itemCenter = itm.offsetTop + ((itm.offsetHeight) / 2);
 
       // ウインドウの中心とアイテムの芯の差
       var parallaxY = windowCenter - itemCenter;
-      //console.log("[windowCenter]", windowCenter);
-      //console.log("[itemCenter]", itemCenter);
       // 実際に移動する量 : 差に対して速度倍率をかける
       parallaxY = Number(i_Item.adjust.y) + parallaxY * i_Item.speed;
-      //console.log(i_Item.adjust.y);
-      //console.log(i_Item.speed);
-      //console.log(parallaxY);
-      //console.log("--");
-
-      //  ・移動量に対してfilterでblurかけてもいい
-      //  ・画像が表示されたら
-
-      //console.log("[rect][top:%d/bottom:%d][sper:%d]", rect.top, rect.bottom, sper);
-      //console.log("[wc:%d]-[itemcenter:%d]=[py:%d]", windowCenter, itemCenter, parallaxY);
 
       //  Y
       var tscale = "scale(" + i_Item.scale + ") ";
       var tajx = "translate3d(" + i_Item.adjust.x + "px, ";
       var tajy = parallaxY + "px, ";
       var tajz = i_Item.adjust.z + "px)";
-      //        console.log("[tajy:%f]-[parallaxY:%f]", tajy, parallaxY);
-
       var txt = tscale + tajx + tajy + tajz;
       //  transformを設定
       itm.style.transform = txt;
-      //console.log("[css]" + txt);
     }
 
     //  指定クラスがあれば全部登録
@@ -2022,15 +1895,9 @@ var eeParallaxEngine = /*#__PURE__*/function () {
       var _this = this;
       var eeps = document.querySelectorAll('.js-eeparallax');
       eeps.forEach(function (target) {
-        //    let yspd = target.getAttribute('data-spd') || 0.1;
-        //    let scale = target.getAttribute('data-scale') || 1.2;
-        //    let adjusty = target.getAttribute('data-adjusty') || 0;
         var yspd = target.dataset['spd'] || 0.1;
         var scale = target.dataset['scale'] || 1.2;
         var adjusty = target.dataset['adjusty'] || 0;
-        //yspd = yspd / 10;
-        //scale = scale / 10;
-        //console.log("えちえぬパララックス:[spd:%f][scale:%f][adjusty:%d]", yspd, scale, adjusty, target);
         var eepi = new eeParallax(target, yspd);
         eepi.setScale(scale);
         eepi.setAdjust(0, adjusty, 0);
@@ -2050,66 +1917,20 @@ var eeParallaxEngine = /*#__PURE__*/function () {
   \*************************************/
 /***/ (function() {
 
-//console.log("gsapよんでる");
-//let ctbg = document.querySelectorAll('.c-title__bg__modan');
-//let ctbgspan = document.querySelectorAll('.c-title__bg__modan');
-//gsap.to('.c-title__bg__modan span', 1, { y: 50, repeat: -1 });
-
-//backdrop-filter: blur(10px);
-//----------------------------------------
-//  ヒーローページ BackGround
-//----------------------------------------
-/*
-let herobg = document.querySelectorAll('.l-hero__background');
-let herobgb = document.querySelectorAll('.l-hero__background-boader');
-gsap.fromTo(herobg, { opacity: 0 }, {
-    opacity: 1,
-    scrollTrigger: {
-        trigger: herobg,
-        start: 'top center',
-    }
-});
-
-gsap.fromTo(herobgb, { opacity: 0 }, {
-    opacity: 1,
-    duration: 4,
-    scrollTrigger: {
-        trigger: herobg,
-        start: 'top center',
-    }
-});
-*/
-
 //----------------------------------------
 //  c-title modan
 //----------------------------------------
-//let textWrappers = document.querySelectorAll('.c-title__bg__modan');
 var textWrappers = document.querySelectorAll('[data-jstype="heading-eff"]');
 textWrappers.forEach(function (textWrapper) {
   //配列
-  //console.log( "ないのか？");
   var bgcl, bgcr, bg, text;
-  //return;
-  /*
-      bgcl = textWrapper.querySelector('span i'); //  左上角
-      bgcr = textWrapper.querySelector('span u'); //  右下角
-      bg = textWrapper.querySelector('span b');
-      text = textWrapper.querySelector('span p');
-      if( bgcl == null ) return;
-  */
-
-  //console.log( textWrapper);
   var base = textWrapper.querySelector('[data-headingparts="base"]'); //  ベース
   if (base == null) return;
   bg = base.querySelector('[data-headingparts="bg"]');
   bgcl = base.querySelector('[data-headingparts="boxlu"]'); //  左上角
   bgcr = base.querySelector('[data-headingparts="boxrb"]'); //  右下角
   lead = base.querySelector('[data-headingparts="lead"]');
-  //console.log( lead );
-
   var title = textWrapper.querySelector('.js__title');
-  //gsap.to(text, 1, { y: 50, repeat: -1 });
-  //    gsap.fromTo(text, 2, { x: -100 }, { rotate: 0, x: 100, backgroundColor: '#f00', ease: 'Power4.easeOut', repeat: -1, });
   gsap.fromTo(bgcl, {
     autoAlpha: 0,
     rotate: -270,
@@ -2166,68 +1987,12 @@ textWrappers.forEach(function (textWrapper) {
     scrollTrigger: {
       trigger: lead,
       //アニメーションが始まるトリガーとなる要素
-      //start: 'top center+=20%'//, //アニメーションが始まる位置を指定
       toggleActions: 'play pause resume reverse',
-      start: 'top center+=50%' //, //アニメーションが始まる位置を指定
-      //end: "+=500"
+      start: 'top center+=50%' //アニメーションが始まる位置を指定
     }
   });
-
-  /*
-  let tl = gsap.timeline({
-      scrollTrigger: {
-          trigger: textWrapper,
-          start: 'top 95%',
-      }
-  });
-  tl
-      .to(textWrapper, { '--scaleX': 1, duration: .4 })
-      .to(text, { y: '0%' }, '-=.25')
-  */
-  //  フォント広げるのは面倒になるだけだし格好よくない
-  /*
-  gsap.fromTo(title, { fontSize: 36 }, {
-      fontSize: 48,
-      duration: 1,
-      scrollTrigger: {
-          trigger: title,
-          start: 'top center+=10%'
-      }
-  });
-  */
 });
 
-/*
-//----------------------------------------
-//  ヘッダー : li
-//----------------------------------------
-let obj_header_navs = document.querySelectorAll('.p-header__nav ul li a');
-obj_header_navs.forEach((obj_header_nav) => { //配列
-    //    console.log(obj_header_nav);
-    let bgli = obj_header_nav; //.querySelector('ul li'); //  項目
-    let bgcl = bgli.querySelector('i'); //  左上角
-    let bgcr = bgli.querySelector('u'); //  右下角
-    //    console.log(bgcl);
-    let anim_cl = gsap.fromTo(bgcl, { opacity: 0, autoAlpha: 0, rotate: -270, scale: 0.5 }, { opacity: 1, autoAlpha: 1, rotate: 0, scale: 1, duration: 0.5 });
-    let anim_cr = gsap.fromTo(bgcr, { autoAlpha: 0, rotate: 270, scale: 0.5 }, {
-        autoAlpha: 1,
-        rotate: 0,
-        scale: 1
-            //duration: 1
-    });
-
-    var tl = new TimelineLite({ paused: true });
-    tl.to(bgcl, 0.2, { backgroundColor: "yellow" })
-        .to(bgcl, 0.2, { height: 100 })
-        .to(bgcl, 0.2, { color: "red", rotation: 360, y: 40 })
-    bgcl.animation = tl;
-
-    bgli.addEventListener("mouseenter", () => anim_cl.animation.play());
-    bgli.addEventListener("mouseleave", () => anim_cl.reverse());
-    bgli.addEventListener("mouseenter", () => anim_cr.play());
-    bgli.addEventListener("mouseleave", () => anim_cr.reverse());
-})
-*/
 //----------------------------------------
 //  ヘッダー : li
 //----------------------------------------
@@ -2250,26 +2015,12 @@ header_li_a.forEach(function (h_lia) {
   var li_a_i = h_lia.querySelector('[data-parts="boxlt"]'); //  左上角
   var li_a_u = h_lia.querySelector('[data-parts="boxrb"]'); //  右下角
   var li_a_span = h_lia.querySelector('[data-parts="text"]'); //  aの下の文字列格納span
-  //let li_a_spans = li_a_span.querySelectorAll('span'); //  spanの下の分割されたspan
-
-  //console.log(h_lia);
-  //console.log(li_a_i);
-  //console.log(li_a_u);
-
-  //    const jsDot = '.js-dot-wrap > span'; // ドットを取得
-  //    const jsBg = '.js-dot-bg'; // 黒い背景を取得
-  //    const jsText = '.js-title span'; // テキストを取得
 
   // 初期の状態(取ってきたドット・テキストは最初は非表示)
   // ドットとテキストを非表示
   gsap.set([li_a_i, li_a_u], {
     opacity: 0
   });
-  //gsap.set([li_a_spans], { color: "white" });
-  // ドットの最初の位置を上40pxに配置
-  //gsap.set(jsDot, {      y: -40    });
-  // テキストの最初の位置を下40pxに配置
-  //gsap.set(li_a_spans, { y: 30 });
   // timelineを作成（各アニメーションを連動させる）
   var tl = gsap.timeline();
   // toで状態を変化させる
@@ -2277,19 +2028,12 @@ header_li_a.forEach(function (h_lia) {
     rotate: 180,
     duration: 0.2,
     opacity: 1
-  }
-  //'+=.1' // 前のアニメーションが完了した0.5秒後にドットを非表示
-  ).to(li_a_u, {
+  }).to(li_a_u, {
     rotate: 180,
     duration: 0.3,
-    // 0.1秒かけてアニメーション
-    //delay: 0.3, // 0.3秒後に起動
-    //x: '100%', //右に100%移動させて画面の外に出す
+    // 0.3秒かけてアニメーション
     opacity: 1
-  }
-  //'+=0.1'
-  );
-
+  });
   ani.pause();
   h_lia.addEventListener("mouseenter", function () {
     return ani.play();
@@ -2306,8 +2050,6 @@ header_li_a.forEach(function (h_lia) {
 {
   var eff_classs = document.querySelectorAll('[data-jsanime="blur__in"]');
   eff_classs.forEach(function (target) {
-    //console.log( "target:" );
-    //console.log( target );
     gsap.set(target, {
       filter: "blur(10px)"
     });
@@ -2330,7 +2072,6 @@ header_li_a.forEach(function (h_lia) {
 gsap.registerPlugin(ScrollTrigger);
 gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
   var y = wrap.getAttribute('data-y') || -100;
-  //console.log("きてる？ん");
   gsap.to(wrap, {
     y: y,
     scrollTrigger: {
@@ -2358,12 +2099,9 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
   var eff_classs = document.querySelectorAll('.js-gsap__scrollbutton');
   eff_classs.forEach(function (target) {
     var divs = target.querySelectorAll('.icon span');
-    //console.log("[target]" + target);
     for (var i = 0; i < divs.length; i++) {
       var iy = i * 0.5;
       var bar = divs[i];
-      //console.log("[i]" + i + "[len]" + divs.length + "[bar]" + bar);
-
       gsap.set(bar, {
         opacity: 0,
         y: 0
@@ -2398,13 +2136,8 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
 //----------------------------------------
 // gsapは恐らくtransitionと干渉する。
 {
-  //    let eff_classs = document.querySelectorAll('.js-surface__up');
   var eff_classs = document.querySelectorAll('[data-jsanime="surface__up"]');
   eff_classs.forEach(function (target) {
-    //let opt = null;
-    //opt = target.querySelectorAll('.c50');
-    //console.log(target.getAttribute('class'));
-    //console.log(target.getAttribute('class'));
     var st_start = "top center";
     if (target.classList.contains('ts_c30')) {
       st_start += '+=30%';
@@ -2501,7 +2234,6 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
 {
   var _eff_classs3 = document.querySelectorAll('[data-jsanime="surface__ltor"]');
   _eff_classs3.forEach(function (target) {
-    //let divs = target.querySelectorAll('div');
     gsap.fromTo(target, {
       autoAlpha: 0,
       rotate: -45,
@@ -2527,7 +2259,6 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
 {
   var _eff_classs4 = document.querySelectorAll('[data-jsanime="surface__rtol"]');
   _eff_classs4.forEach(function (target) {
-    //let divs = target.querySelectorAll('div');
     gsap.fromTo(target, {
       autoAlpha: 0,
       rotate: 45,
@@ -2548,20 +2279,16 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
 }
 
 //----------------------------------------
-//  surface : ゲーム文字列
+//  surface : ゲーム的文字列
 //----------------------------------------
 {
   var _eff_classs5 = document.querySelectorAll('[data-jsanime="surface__gametext"]');
   //文字列（テキスト）を分割しspanで囲む
   _eff_classs5.forEach(function (target) {
     var newText = '';
-    //        const text = target.textContent;  //  文字列のみ
-    //const text = target.innerText;    //  改行のみ
     var text = target.innerHTML; //  タグあり
-    //console.log(text);
     var result_br = text.split('<br>');
     for (var j = 0; j < result_br.length; j++) {
-      //console.log("[j]" + j + " [text]" + result_br[j]);
       var result = result_br[j].split('');
       for (var i = 0; i < result.length; i++) {
         newText += '<b>' + result[i] + '</b>';
@@ -2654,16 +2381,12 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
   var _eff_classs7 = document.querySelectorAll('[data-jsanime="surface__heroheading2"]');
   _eff_classs7.forEach(function (target) {
     var divs = target.querySelectorAll('div');
-    //console.log(divs);
-
     divs.forEach(function (item) {
       gsap.set(item, {
         opacity: 0,
         y: 40
       });
     });
-
-    //        gsap.set([divs[0], divs[1], divs[2], divs[3]], { opacity: 0 });
     gsap.set(divs[0], {
       opacity: 0,
       y: 40,
@@ -2677,10 +2400,6 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
     var tl = gsap.timeline();
     //  指のサイズ
     var handSize = 3;
-    //        if (checkUA() == isSP) {
-    //            handSize = 2;
-    //        }
-    //  ！
     tl.to(divs[0], {
       y: 0,
       rotate: 0,
@@ -2793,17 +2512,12 @@ gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
       y: -40,
       duration: 1,
       opacity: 1
-    }).to(
-    //divs[7], { y: -15, backgroundColor: "#90ee90",padding :"0px 40px", duration: 1 },
-    divs[7], {
+    }).to(divs[7], {
       y: -50,
       backgroundColor: "rgba(144,238,144,0.8)",
       padding: "0px 40px",
       duration: 1
-    }
-    //        ).to(
-    //            divs[6], { y: -80, opacity: 0, duration: 1 },
-    );
+    });
   });
 }
 
@@ -2838,34 +2552,25 @@ var myExternalLinks = /*#__PURE__*/function () {
     _classCallCheck(this, myExternalLinks);
     //  全てのa hrefを取得
     this.hrefs = document.querySelectorAll('a');
-    //console.log("きてる？" + this.hrefs.length);
   }
 
   //  外部リンクの修正
   _createClass(myExternalLinks, [{
     key: "fixingExternalLinks",
     value: function fixingExternalLinks() {
-      //console.log("現在: " + wp_path);
       this.hrefs.forEach(function (target) {
         var url = target.href;
         var reg = new RegExp("^(https?:)?\/\/" + location.hostname);
-        if (url.match(reg) || url.charAt(0) === "/") {
-          //  内部リンク時の処理
-          //    console.log("内部 : " + url);
-        }
+        if (url.match(reg) || url.charAt(0) === "/") {}
         //  外部リンクである
         else {
           var fexception = false;
           //  例外判定
           if (url.indexOf('twitter.com/etienu352') !== -1) {
             fexception = true;
-            //    console.log("例外 : " + url);
           }
-
           if (!fexception) {
-            //    console.log("外部！ : " + url);
             var acls = "c-link__exicon";
-            //console.log(target.classList);
             if (target.classList.contains("exi-xs")) {
               acls += " c-link__exicon--xs";
             } else if (target.classList.contains("exi-md")) {
@@ -2881,8 +2586,6 @@ var myExternalLinks = /*#__PURE__*/function () {
               ne.setAttribute("class", "fa-solid fa-external-link-alt");
               target.appendChild(ne);
             }
-            //  object式 - 色変更ができない
-            if (false) { var _ne; }
           }
         }
       });
@@ -2999,8 +2702,6 @@ alinks.forEach(function (anchor) {
     e.preventDefault();
     var href = anchor.getAttribute("href");
     headerHeight = pHeader ? pHeader.offsetHeight : 0;
-    //console.log('[a]:' + headerHeight);
-    //console.log('[a]:' + href);
 
     // href属性の#を取り除いた部分と一致するIDを取得
     var target = document.getElementById(href.replace('#', ''));
@@ -3616,14 +3317,6 @@ __webpack_require__.r(__webpack_exports__);
  //  クッキークラス
  //  WebP判定
 
-//
-//gsap
-//import '../lib/gsap/gsap.min.js'; //  本体
-//import '../lib/gsap/scrolltrigger.min.js'; //  スクロールトリガー
-//swiper
-//import '../lib/swiper/swiper-bundle.min.js'; //  本体
-
-//
 //  練習兼、見出し背景、
 
 //  wowの真似事、up,upgroupなどふわっと出る演出
@@ -3633,9 +3326,6 @@ __webpack_require__.r(__webpack_exports__);
 
 //  パララックス
 
-//  swiper設定
-//  ページにswiperがなくてもエラーはないが、swiperがあって中身がないとエラー出る
-//import './swiper-setting';
 //  swiperより演出数は少ないがとても軽い
 
 
@@ -3646,19 +3336,13 @@ var bp = {
   lg: 1024,
   xl: 1280
 };
-
-//const btnGotoTop = new buttonGotoTop('.js-gotoTop', 80);
 var btnHumburger = new _content_btn_humburger__WEBPACK_IMPORTED_MODULE_3__["default"]('.p-hamburger', ".p-spmenu__closebutton", ".l-header", ".p-spmenu");
 var acsb = new _content_accessibility__WEBPACK_IMPORTED_MODULE_4__["default"]();
-//const btnModalPlan = new buttonModal('.p-hero__buttonwrapper .plan', ".p-modal__plan", ".p-modal__plan .p-modal__background");
-//const btnModalArea = new buttonModal('.p-hero__buttonwrapper .area', ".p-modal__area", ".p-modal__area .p-modal__background");
-//const pHeader = new partsHeader(".l-header");
 var dispLoader = new _content_disp_loader__WEBPACK_IMPORTED_MODULE_7__["default"]();
 var contactform = new _content_contactform__WEBPACK_IMPORTED_MODULE_8__["default"]();
 var pbg = new _content_pagebackground__WEBPACK_IMPORTED_MODULE_9__["default"]();
 var oscheck = new _content_oscheck__WEBPACK_IMPORTED_MODULE_10__["default"]();
 var adjustviewport = new _adjustviewport__WEBPACK_IMPORTED_MODULE_11__["default"]();
-//const myexternallinks = new myExternalLinks();
 var eeparallax = new _eeparallax_eeparallax__WEBPACK_IMPORTED_MODULE_13__["default"]();
 var btncookie = new _content_btn_cookie__WEBPACK_IMPORTED_MODULE_14__["default"]();
 
@@ -3666,16 +3350,10 @@ var btncookie = new _content_btn_cookie__WEBPACK_IMPORTED_MODULE_14__["default"]
 //  ロード時初期化
 //----------------------------------------------------
 var init = function init() {
-  //console.log("[テンプレート確認]" + wp_template);
-
-  //  トップに戻るの設定
-  //btnGotoTop.eventRegistration();
   //  ヘッダーハンバーガーの設定
   btnHumburger.eventRegistration('.p-spmenu__inner', 'ul li a', '.l-header__buttonswrapper a');
   //  汎用キー入力関係の設定
   acsb.eventRegistration();
-  //btnModalPlan.eventRegistration('.p-modal__plan .p-modal__inner', 'ul li a');
-  //    btnModalArea.eventRegistration('.p-modal__area .p-modal__inner', 'ul li a');
   //  クッキー
   btncookie.eventRegistration();
 
@@ -3688,21 +3366,12 @@ var init = function init() {
   if (wp_template == "page-contact.php") {
     contactform.eventRegistration();
   }
-  //  トップページ背景
-  //pbg.taskLoad();
 
   //  OSの判別
-  //  oscheck.dispUserAgent('.disp__userAgent'); //  指定クラスに出力
   oscheck.markBody(); //  bodyにOS判断クラス付け(iOS Machintosh 等)
 
   //  ビューポートの調整
   adjustviewport.set();
-
-  //  外部リンクの処理
-  //myexternallinks.fixingExternalLinks();
-  //  パララックス
-  //eeparallax.eventRegistration();
-  //eeparallax.task();
 };
 
 //----------------------------------------------------
@@ -3715,20 +3384,12 @@ window.addEventListener('DOMContentLoaded', function () {
 //----------------------------------------------------
 //  イベント : スクロール
 //----------------------------------------------------
-window.addEventListener('scroll', function () {
-  //    btnGotoTop.task(); //  トップに戻るのスクロール時処理
-  //pHeader.scrollTask(); //  ヘッダーのスクロール時処理
-  //pbg.taskScroll(); //  トップページ背景スクロール処理
-  //eeparallax.task();
-});
+window.addEventListener('scroll', function () {});
 
 //----------------------------------------------------
 //  イベント : リサイズ
 //----------------------------------------------------
 window.addEventListener("resize", function () {
-  //    console.log("resize");
-  //eeparallax.task();
-
   //  ビューポートの調整
   adjustviewport.task();
 });

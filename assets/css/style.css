@@ -469,51 +469,6 @@ button {
 #   variables
 #   変数
 ============================================================*/
-/*
-$baseFont: 'Lora',
-'Yu Mincho', // Windows用YoGothic
-'游ゴシック体',
-'YuMincho', // Mac向け
-//  Android、iOSに游ゴシックはないので以下
-sans-serif;
-//
-//  各端末(iPhone・iPad,Android,Mac,Windows(Edge・Chrome,Firefox,IE))ごとの設定対応
-// https://blog.yoshinonaco.com/font-family-2020/#toc1
-$baseFont: //'Lora',
-'Yu Mincho',
--apple-system,
-BlinkMacSystemFont,
-Roboto,
-"Segoe UI",
-"Helvetica Neue",
-HelveticaNeue,
-YuGothic,
-"Yu Gothic Medium",
-"Yu Gothic",
-Verdana,
-Meiryo,
-sans-serif;
-//
-// bold指定
-$baseFont-bold: -apple-system,
-BlinkMacSystemFont,
-Roboto,
-"Segoe UI semibold",
-"Helvetica Neue",
-HelveticaNeue,
-YuGothic,
-"Yu Gothic",
-"Segoe UI",
-Verdana,
-Meiryo,
-sans-serif;
-//
-//  sp用指定
-$baseSpFont: 'Yu Mincho',
-'メイリオ',
-'Meiryo',
-'arial';
-*/
 /*==========================================================================
 box shadow
 box-shadowジェネレータ https://www.bad-company.jp/box-shadow
@@ -533,17 +488,6 @@ Easingジェネレーター https://easings.co/
 /*----------------------------------------
         サイトの色指定
 ----------------------------------------*/
-/*--------------------------------------------------
-レスポンシブ計算
---------------------------------------------------*/
-/*==========================================================================
-SVGをBase64コードに変換する
-[Html] SVG塗りつぶしの色をBackground-Imageとして扱うときに変更する
-https://code.i-harness.com/ja/q/cbfa3c
-============================================================================*/
-/*==========================================================================
-フレキシブルな数字の生成 y=ax+bの形の一次関数グラフの動きをする余白を生成します。
-============================================================================*/
 /*========================================
         ブレイクポイント
 ========================================*/
@@ -843,158 +787,6 @@ img {
   font-weight: 900;
 }
 
-/*
-
-
-@font-face {
-    font-family: 'Font Awesome 5 Brands';
-    font-display: block;
-    font-weight: 400;
-    src: url("../webfonts/fontawesome/fa-brands-400.woff2") format("woff2"), url("../webfonts/fontawesome/fa-brands-400.ttf") format("truetype");
-}
-
-
-
-@font-face {
-    font-family: 'Font Awesome 5 Free';
-    font-display: block;
-    font-weight: 900;
-    src: url("../webfonts/fontawesome/fa-solid-900.woff2") format("woff2"), url("../webfonts/fontawesome/fa-solid-900.ttf") format("truetype");
-}
-
-
-
-@font-face {
-    font-family: 'Font Awesome 5 Free';
-    font-display: block;
-    font-weight: 400;
-    src: url("../webfonts/fontawesome/fa-regular-400.woff2") format("woff2"), url("../webfonts/fontawesome/fa-regular-400.ttf") format("truetype");
-}
-
-
-@font-face {
-    font-family: 'FontAwesome';
-    font-display: block;
-    src: url("../webfonts/fontawesome/fa-solid-900.woff2") format("woff2"), url("../webfonts/fontawesome/fa-solid-900.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: 'FontAwesome';
-    font-display: block;
-    src: url("../webfonts/fontawesome/fa-brands-400.woff2") format("woff2"), url("../webfonts/fontawesome/fa-brands-400.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: 'FontAwesome';
-    font-display: block;
-    src: url("../webfonts/fontawesome/fa-regular-400.woff2") format("woff2"), url("../webfonts/fontawesome/fa-regular-400.ttf") format("truetype");
-    unicode-range: U+F003, U+F006, U+F014, U+F016-F017, U+F01A-F01B, U+F01D, U+F022, U+F03E, U+F044, U+F046, U+F05C-F05D, U+F06E, U+F070, U+F087-F088, U+F08A, U+F094, U+F096-F097, U+F09D, U+F0A0, U+F0A2, U+F0A4-F0A7, U+F0C5, U+F0C7, U+F0E5-F0E6, U+F0EB, U+F0F6-F0F8, U+F10C, U+F114-F115, U+F118-F11A, U+F11C-F11D, U+F133, U+F147, U+F14E, U+F150-F152, U+F185-F186, U+F18E, U+F190-F192, U+F196, U+F1C1-F1C9, U+F1D9, U+F1DB, U+F1E3, U+F1EA, U+F1F7, U+F1F9, U+F20A, U+F247-F248, U+F24A, U+F24D, U+F255-F25B, U+F25D, U+F271-F274, U+F278, U+F27B, U+F28C, U+F28E, U+F29C, U+F2B5, U+F2B7, U+F2BA, U+F2BC, U+F2BE, U+F2C0-F2C1, U+F2C3, U+F2D0, U+F2D2, U+F2D4, U+F2DC;
-}
-
-@font-face {
-    font-family: 'FontAwesome';
-    font-display: block;
-    src: url("../webfonts/fontawesome/fa-v4compatibility.woff2") format("woff2"), url("../webfonts/fontawesome/fa-v4compatibility.ttf") format("truetype");
-    unicode-range: U+F041, U+F047, U+F065-F066, U+F07D-F07E, U+F080, U+F08B, U+F08E, U+F090, U+F09A, U+F0AC, U+F0AE, U+F0B2, U+F0D0, U+F0D6, U+F0E4, U+F0EC, U+F10A-F10B, U+F123, U+F13E, U+F148-F149, U+F14C, U+F156, U+F15E, U+F160-F161, U+F163, U+F175-F178, U+F195, U+F1F8, U+F219, U+F27A;
-}
-*/
-/*
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Roboto-Medium.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 300;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Roboto-Light.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: bold;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Roboto-Bold.ttf") format("truetype");
-    font-display: swap;
-}
-*/
-/*
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Lato/Lato-Regular.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: bold;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Lato/Lato-Bold.ttf") format("truetype");
-    font-display: swap;
-}
-*/
-/*
-//  Kiwi Maru
-@font-face {
-    font-family: 'Kiwi Maru';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Kiwi_Maru/KiwiMaru-Medium.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Kiwi Maru';
-    font-style: normal;
-    font-weight: bold;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Kiwi_Maru/KiwiMaru-Regular.ttf") format("truetype");
-    font-display: swap;
-}
-
-//  Kosugi Maru
-@font-face {
-    font-family: 'Kosugi Maru';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Kosugi_Maru/KosugiMaru-Regular.ttf") format("truetype");
-    font-display: swap;
-}
-
-//  Kosugi Maru
-//  M PLUS 1p
-@font-face {
-    font-family: 'M PLUS 1p';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/googlefonts/M_PLUS_1p/MPLUS1p-Medium.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'M PLUS 1p';
-    font-style: normal;
-    font-weight: bold;
-    font-display: block;
-    src: url("../webfonts/googlefonts/M_PLUS_1p/MPLUS1p-Bold.ttf") format("truetype");
-    font-display: swap;
-}
-*/
 @font-face {
   font-family: "Noto Serif JP";
   font-style: normal;
@@ -1012,24 +804,9 @@ img {
   font-display: swap;
 }
 /*
-//  Allura
-@font-face {
-    font-family: 'Allura';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url("../webfonts/googlefonts/Allura/Allura-Regular.ttf") format("truetype");
-    font-display: swap;
-}
-*/
-/*
-本文：YuGothic
-見出しなど：Tsukushi B Round Gothic
-数字：Avenir
-
-本文：YuGothic
-見出しなど：M PLUS 1p
-数字：Lato
+本文：Noto Serif JP
+見出しなど：Noto Serif JP
+数字：Lora
 */
 /*--------------------------------------------------
     ヘッダー
@@ -1472,19 +1249,6 @@ body.dwis-active {
   align-items: center;
   border: solid 1px RGBA(49, 69, 45, 1);
   transition: background 0.3s, color 0.3s, border 0.3s;
-  /*
-      &.arrow-right {
-          &:after {
-              position: absolute;
-              content: "";
-              width: 20px;
-              height: 20px;
-              border-right: 1px solid g.$color-white;
-              border-bottom: 1px solid g.$color-white;
-              transform: rotate(-45deg);
-          }
-      }
-  */
 }
 .c-button__lineframe:hover {
   cursor: pointer;
@@ -1976,198 +1740,6 @@ label:hover .c-form__radio-icon {
     letter-spacing: 0.1875rem;
   }
 }
-.p-swiper__container {
-  width: 100%;
-}
-
-.p-swiper__pagination-inner {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-}
-.p-swiper__pagination-inner .swiper-horizontal > .swiper-pagination-bullets,
-.p-swiper__pagination-inner .swiper-pagination-bullets.swiper-pagination-horizontal,
-.p-swiper__pagination-inner .swiper-pagination-custom,
-.p-swiper__pagination-inner .swiper-pagination-fraction {
-  bottom: 0;
-}
-
-.swiper {
-  /*スライダーの幅と高さを調整*/
-  width: 50%;
-  height: 400px;
-}
-
-.swiper-slide {
-  /*スライド要素の幅と高さを調整*/
-  width: 100%;
-  height: 100%;
-  /*テキストの位置調整*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /*テキストの色と太さを指定*/
-  color: #fff;
-  font-weight: bold;
-}
-
-/*①各スライドに以下クラスを追加で付与*/
-/*②スライド背景色を設定*/
-.slide1 {
-  background-color: #88acbd;
-}
-
-.slide2 {
-  background-color: #99cb1f;
-}
-
-.slide3 {
-  background-color: #e43a47;
-}
-
-.p-header__logo-wrapper {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 24px;
-  line-height: 1;
-}
-.p-header__logo-wrapper h1 {
-  font-size: 24px;
-}
-
-/*
-//----------------------------------------
-//   ヘッダーロゴ
-//----------------------------------------
-.p-header__logo {
-    display: flex;
-    align-items: center;
-    font-family: global.$baseFont;
-    //font-family: 'Meiryo UI', 'メイリオ', 'Meiryo', 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
-    margin: auto 0px auto 16px;
-    text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
-    transition: 0.3s;
-    img {
-        color: global.$color-font-w;
-        object-fit: cover;
-        width: auto;
-        height: auto;
-    }
-    &:hover {
-        text-shadow: 0px 0px 16px rgba(0, 0, 0, 1);
-    }
-}
-
-//----------------------------------------
-//   ナビメニュー
-//----------------------------------------
-.p-header__nav {
-    display: flex;
-    flex-direction: row;
-    $bgcol: global.$color-brown;
-    margin-right: clamp(0px, 2vw, 40px);
-    ul {
-        display: flex;
-        flex-direction: row;
-        margin: auto;
-        li {
-            font-weight: bold;
-            font-size: clamp(14px, 2vw, 18px);
-            margin: auto clamp( 10px, 1vw, 20px);
-            transition: 0.3s color;
-            position: relative;
-            a {
-                &:after {
-                    content: "";
-                    position: absolute;
-                    left: -10%;
-                    border-bottom: 4px solid $bgcol;
-                    border-radius: 4px;
-                    width: 0;
-                    height: 100%;
-                    transition: 0.3s;
-                    opacity: 0;
-                }
-            }
-            &:hover {
-                transform: translate( 0, 2px);
-                a {
-                    &:after {
-                        width: 120%;
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-    }
-}
-
-//----------------------------------------
-//   ボタン
-//----------------------------------------
-.p-header__button {
-    width: clamp( 100px, 12vw, 160px);
-    height: 100%;
-    background-color: global.$color-button-contact;
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-    i {
-        font-size: 40px;
-    }
-    &:hover {
-        cursor: pointer;
-        background-color: global.$color-main-cv;
-        box-shadow: 0 0 16px rgba(0, 0, 0, 1);
-    }
-    overflow:hidden;
-    &:after {
-        content: '';
-        position: absolute;
-        top: -100%;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(100deg, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 0) 0%);
-        //  アニメーション
-        animation-name: shiny;
-        animation-duration: 6s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-    }
-}
-
-//  ボタンのキラキラ
-@keyframes shiny {
-    0% {
-        transform: scale(0) rotate(25deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1) rotate(25deg);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(50) rotate(25deg);
-        opacity: 0;
-    }
-}
-
-//  レスポンシブ
-@include global.mq('sp') {
-    .p-header__nav {
-        display: none;
-    }
-}
-*/
 .p-hamburger__wrapper {
   right: 0;
   transition: 0.3s;
@@ -2454,7 +2026,7 @@ label:hover .c-form__radio-icon {
   letter-spacing: min(0.3472222222vw, 5px);
 }
 .p-headline__h2.big {
-  font-size: clamp(30px, 3.8888888889vw, 56px);
+  font-size: clamp(30px, 2.0833333333vw, 56px);
   letter-spacing: min(0.2847222222vw, 4.1px);
 }
 .p-headline__h2.left {
@@ -2561,7 +2133,7 @@ label:hover .c-form__radio-icon {
 .p-headerbar__menulist ul .p-headerbar__menuitem a span:nth-child(2) {
   margin-top: -2px;
   margin-left: -5px;
-  font-size: clamp(10px, 0.8333333333vw, 12px);
+  font-size: clamp(10px, 0.6944444444vw, 12px);
   font-family: "Lora";
   color: RGBA(182, 155, 4, 1);
 }
@@ -2618,7 +2190,7 @@ label:hover .c-form__radio-icon {
 }
 .p-headerbar__buttonarea .p-button__cv span:nth-child(2) {
   margin-top: -3px;
-  font-size: clamp(10px, 0.8333333333vw, 12px);
+  font-size: clamp(10px, 0.6944444444vw, 12px);
   font-family: "Lora";
   color: RGBA(182, 155, 4, 1);
 }
@@ -2636,7 +2208,7 @@ label:hover .c-form__radio-icon {
   .p-headerbar__menulist ul .p-headerbar__menuitem {
     padding-left: clamp(20px, 3.2258064516vw, 32px);
     padding-right: clamp(20px, 2.8225806452vw, 28px);
-    font-size: clamp(12px, 1.6129032258vw, 16px);
+    font-size: clamp(12px, 1.2096774194vw, 16px);
   }
   .p-headerbar__buttonarea {
     margin-right: 0px;
@@ -2779,7 +2351,7 @@ label:hover .c-form__radio-icon {
   }
   .p-hero .p-hero__content .p-hero__headline {
     font-size: clamp(36px, 10.6666666667vw, 44px);
-    line-height: clamp(56px, 14.9333333333vw, 60px);
+    line-height: clamp(56px, 3.8888888889vw, 60px);
     letter-spacing: max(0vw, 0px);
     margin-left: 0px;
     margin-top: 59px;
@@ -2792,7 +2364,7 @@ label:hover .c-form__radio-icon {
     margin-left: 0px;
     margin-top: 2px;
     font-size: clamp(21px, 6.4vw, 26px);
-    line-height: clamp(40px, 10.6666666667vw, 44px);
+    line-height: clamp(40px, 2.7777777778vw, 44px);
     letter-spacing: 0;
   }
   .p-hero .p-hero__content .p-hero__border {
@@ -2878,53 +2450,6 @@ label:hover .c-form__radio-icon {
   aspect-ratio: 1120/480;
 }
 
-@media screen and (max-width: 1279px) {
-  /*    
-      .p-concept__inner {
-          .p-concept__item {
-              max-width: 1000px;
-              gap: g.vwmax(50);
-              .p-concept__textgroup {
-                  width: calc(50% - 20px);
-                  //width: 50%;
-                  margin-top: g.vwmax(28);
-                  &.no02 {
-                      margin-top: g.vwmax(28);
-                  }
-                  &.no03 {
-                      margin-top: g.vwmax(28);
-                  }
-              }
-          }
-      }
-  */
-}
-@media screen and (max-width: 991px) {
-  /*    
-      .p-concept__inner {
-          width: calc(100% - 40px);
-          .p-concept__item {
-              gap: 20px;
-              .p-concept__textgroup {
-                  //margin-top: g.vwmax(28);
-                  width: calc( 60% - 20px);
-                  .p-concept__lead {
-                      font-size: g.rem(14);
-                      &.no03 {
-                          width: 100%;
-                      }
-                  }
-                  &.no02 {
-                      //margin-top: g.vwmax(28);
-                  }
-                  &.no03 {
-                      //margin-top: g.vwmax(28);
-                  }
-              }
-          }
-      }
-  */
-}
 @media screen and (max-width: 767px) {
   .p-concept__inner {
     margin-top: 72px;
@@ -3568,19 +3093,6 @@ label:hover .c-form__radio-icon {
     display: none;
   }
 }
-/*
-.p-footer {
-    margin: auto;
-    margin-top: 78px;
-    padding-bottom: 96px;
-    width: 100%;
-    max-width: calc( 1440px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: g.$color-white;
-}
-*/
 .p-footer__inner {
   margin: auto;
   width: 100%;
@@ -4070,6 +3582,7 @@ label:hover .c-form__radio-icon {
 .u-padding_ud200 {
   padding: 200px 0px;
 }
+
 .u-maxwidth1100 {
   max-width: 1100px;
 }
@@ -4097,7 +3610,7 @@ label:hover .c-form__radio-icon {
 }
 
 /*--------------------------------------------------
-    トップに戻る
+    トップに戻るボタン
 --------------------------------------------------*/
 .js-gotoTop__Wrapper {
   position: fixed;
@@ -4111,101 +3624,5 @@ label:hover .c-form__radio-icon {
   background: transparent;
   z-index: 100;
 }
-
-/*
-//  表示/非表示処理はjs
-.js-gotoTop {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    right: 0px;
-    bottom: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: global.$color-main-accent;
-    z-index: 100;
-    transition: 0.3s;
-    opacity: 1;
-    cursor: pointer;
-    &.show {}
-    &.hide {
-        pointer-events: none;
-        opacity: 0;
-    }
-    &:hover {
-        transform: translate(0, -2px);
-        -webkit-filter: drop-shadow(rgba(0, 0, 0, 4) 0px 1px 2px);
-        background-color: global.$color-key-white;
-        .js-gotoTop__icon {
-            filter: invert(80%);
-        }
-    }
-    @include global.mq('sp') {
-        right: 10px;
-        bottom: 4px;
-        &:hover {
-            bottom: 10px;
-        }
-    }
-}
-
-.js-gotoTop__icon {
-    position: relative;
-    display: block;
-    width: 40px;
-    height: 40px;
-    text-decoration: none;
-    filter: invert(0%);
-    transition: 0.3s;
-    //
-    font-size: 25px;
-    color: #fff;
-    margin: auto;
-}
-*/
-/*
-//--------------------------------
-//  SCROLLボタン
-//--------------------------------
-.js-gsap__scrollbutton {
-    width: 100px;
-    bottom: 15vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    .icon {
-        width: 100px;
-        height: 100px;
-        display: flex;
-        transform: translate(0%, -0%);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        span {
-            opacity: 0;
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 4px solid global.$color-main-background;
-            border-top: none;
-            border-left: none;
-            transform: rotate(45deg);
-            &:nth-child(1) {}
-            &:nth-child(2) {}
-            &:nth-child(3) {}
-        }
-    }
-    .text {
-        margin: auto;
-        margin-bottom: 0;
-        display: flex;
-    }
-}
-*/
 
 /*# sourceMappingURL=style.css.map*/
