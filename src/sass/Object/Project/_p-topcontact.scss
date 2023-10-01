@@ -1,0 +1,265 @@
+@use "../../global" as g;
+// 
+.p-topcontact {
+    overflow:visible;
+    position : relative;
+    background-color: g.$color-beige;
+}
+
+.p-topcontact__inner {
+    max-width: 1440px;
+    margin: auto;
+    padding-top: 109px;
+}
+
+.p-topcontact__groupwrapper {
+    position:relative;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    padding-top: 79px;
+    padding-bottom : 127px;
+}
+
+.p-topcontact__group {
+    max-width:842px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: flex-start;
+    margin-top: 1px;
+    gap:1px;
+    .p-topcontact__item {
+        position:relative;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: flex-start;
+        width: 100%;
+        margin-right:auto;
+        padding-bottom:20px;
+        font-size: g.rem(16);
+        .p-topcontact__icon,
+        .p-topcontact__title,
+        .p-topcontact__content{
+            position : relative;
+            height:100%;
+            display:flex;
+            align-items:center;
+            letter-spacing:-0.3px;
+            &.topcontact{
+                color: g.$color-yellow;
+            }
+            &.event{
+                
+            }
+        }
+        .p-topcontact__icon{
+            height: 35px;
+        } 
+        .p-topcontact__title{
+            font-size: g.rem(20);
+            margin-top:7px;
+        }
+        .p-topcontact__content{
+            letter-spacing: 0.05px;
+            flex-direction : column;
+            .button{
+                margin-top:16px;
+            }
+            .tel{
+                font-size: g.rem(24);
+                font-family: g.$font-Lora;
+            }
+            .time{
+                font-size: g.rem(12);
+                padding-left: 2px;
+                margin-top: -5px;
+                span{
+                    font-family: g.$font-Lora;
+                }
+            }
+            .p-button__lineframe{
+                max-width : 160px;
+            }
+        }
+        &:nth-child(n+2){
+            position : relative;
+            &:before{
+                position: absolute;
+                content: "";
+                left : 0;
+                height:191px;
+                width: 1px;
+                top : -22px;
+                background-color: g.$color-black;
+            }
+        }
+        &.no01{
+            transform : translate( -1px, 0);
+        }
+        &.no02{
+            padding-left: 1px;
+        }
+        &.no03{
+            .p-topcontact__title{
+            }
+            .p-topcontact__content{
+                margin-top:8px;
+                .tel{
+
+                }
+            }    
+
+        }
+    }
+}
+
+.p-topcontact__buttonwrapper{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display:flex;
+    justify-content: center;
+    .p-button__lineframe{
+    }
+}
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-xl') {
+}
+
+@include g.mq('-lg') {
+}
+
+@include g.mq('-md') {
+    .p-topcontact__inner {
+        padding-top: 33px;
+        width: 100%;
+        max-width: calc( 100% - 40px );
+        .p-headline__h2 {
+            margin-left: -1px;
+        }
+        .p-topcontact__groupwrapper {
+            padding-top : 0;
+            padding-bottom: 48px;
+        }
+        .p-topcontact__group {
+            margin-top: 39px;
+            gap: 65px;
+            flex-direction: column;
+        }
+        .p-topcontact__item {
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            margin:auto;
+            width: calc(100%);
+            padding-bottom : 0;
+            gap: 0px;
+            .p-topcontact__icon,
+            .p-topcontact__title,
+            .p-topcontact__content{
+                position : relative;
+                height:100%;
+                display:flex;
+                align-items: center;
+                letter-spacing:-0.3px;
+                margin-top :0;
+                &.topcontact{
+                    color: g.$color-yellow;
+                }
+                &.event{
+                    
+                }
+            }
+            .p-topcontact__icon{
+                width : 56px;
+                height: 40px;
+            } 
+            .p-topcontact__title{
+                width: 96px;
+                justify-content:center;
+                font-size: g.rem(16);
+                line-height: g.rem(24);
+            }
+            .p-topcontact__content{
+                width: 100%;
+                max-width: calc( 152px + 16px + 16px );
+                flex-direction : column;
+                align-items: flex-end;
+                letter-spacing: 0.05px;
+                .button{
+                    margin-top:0px;
+                }
+                .tel{
+                    display: none;
+                }
+                .time{
+                    font-size: g.rem(12);
+                    margin-top: 3px;
+                    transform : translate( -5px, 0 );
+                    span{
+                        font-family: g.$font-Lora;
+                    }
+                }
+                .p-button__lineframe{
+                    max-width : 152px;
+                    margin-right: 0px;
+                }
+            }
+            &:nth-child(n+2){
+                &:before{
+                    left : 0;
+                    height:1px;
+                    width: 100%;
+                    top : -33px;
+                    background-color: g.$color-black;
+                }
+            }
+            //  個別
+            &.no01{
+                .p-topcontact__icon{
+                    transform:translate(13px,1px);
+                }
+            }
+            &.no02{
+                .p-topcontact__icon{
+                    transform:translate(9px,1px);
+                }
+            }
+            &.no03{
+                margin-top:-12px;
+                .p-topcontact__icon{
+                transform:translate(15px,0);
+                }
+                .p-topcontact__title{
+                    transform:translate(0,1px);
+                }
+                .p-topcontact__content{
+                    transform:translate(0,12px);
+                    margin-top:0px;
+                }
+                &:before{
+                    top : -21px;
+                }
+            }
+        }
+    }
+}
+
+//  374pxより下
+@include g.mq('-xs') {
+    .p-topcontact__inner {
+        .p-topcontact__item {
+            .p-topcontact__title{
+                display:none;
+            }
+        }
+    }
+}

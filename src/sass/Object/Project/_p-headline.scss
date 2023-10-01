@@ -1,0 +1,57 @@
+@use "../../global" as g;
+//  c-headline__h2と合わせる位置調整
+.p-headline__h2 {
+    display: block;
+    position: relative;
+    margin: auto;
+    letter-spacing: g.vwmax(0);
+    span {
+        font-family: g.$font-Lora;
+        letter-spacing: g.vwmax(5);
+    }
+    &.big {
+        font-size: g.vwclampmax(30, 56);
+        letter-spacing: g.vwmax(4.1);
+    }
+    &.left {
+        text-align: left;
+    }
+    &.line {
+        &:after {
+            display: inline-block;
+            position: relative;
+            content: "";
+            margin-left: 28px;
+            top: 50%;
+            width: 340px;
+            height: 1px;
+            background-color: g.$color-black;
+        }
+    }
+    &.ti1{
+        text-indent: 1px;
+    }
+}
+
+//  c-headline__h3と合わせる位置調整
+.p-headline__h3 {
+    margin-left: g.vwmax(146);
+}
+
+//--------------------------------
+//  レスポンシブ
+//--------------------------------
+@include g.mq('-md') {
+    .p-headline__h2 {
+        margin: auto;
+        font-size: g.rem(24);
+        &:after{
+            margin-top: -6px;
+            margin-left: -3px;
+            letter-spacing : g.rem(-1.2);
+        }
+        &:before{
+            bottom:-17px;
+        }
+    }
+}
